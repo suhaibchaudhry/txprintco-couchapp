@@ -1,0 +1,60 @@
+Inspired by: "CouchRest library for Ruby":http://jchrisa.net/drl/_design/sofa/_list/post/post-page?startkey=%5B%22couchrest__restful_ruby_client_%22%5D and the "couchdb-python":http://packages.python.org/CouchDB/client.html#document library.
+
+h3. Server Functions
+
+# Specify a server: 
+@$server = new SetteeServer('http://127.0.0.1:5984');@
+# Database API
+## Create a database:
+@$ret = $server->create_db('irakli_test');@ 
+## Drop a database:
+@$ret = $server->drop_db('irakli_test');@ 
+## List all databases:
+@$ret = $server->list_dbs();@
+## Get a database object
+@$db = $server->get_db('irakli_test');@
+# Document API
+## Create/Update a document:
+@$ret = $db->save($doc);@
+## Retrieve a document:
+@$db_doc = $db->get($id);@
+## Determine the latest revision_id for a document:
+@$rev = $db->get_rev($id);@
+## Delete a document:
+@$db_doc = $db->delete($doc);@
+# Attachments API
+## Add  content as attachment:
+@$db->add_attachment($doc, "foo.txt", "Some text that will be base64 encoded", "text/plain");@
+## Add a file path to be attached:
+@$db->add_attachment_file($doc, "foo.pdf", $file_path, "application/pdf");@
+## Add a file path to be attached (mime-type is auto-detected):
+@$db->add_attachment_file($doc, "foo.pdf", $file_path);@
+## Full attachment saving example:
+    $doc = new stdClass();
+    $doc->_id = "attachment_doc";
+    $file_path = dirname(__FILE__) . "/resources/couch-logo.pdf";
+    $this->db->add_attachment_file($doc, "foo.pdf", $file_path, "application/pdf");
+    $db_doc = $this->db->save($doc);
+## ATTENTION: there is no "load_attachments" method, because when you load a document, all its attachments get loaded with it, as well.
+# Views API
+## Create a new view or save a view:
+@$view = $db->save_view("some_design_document_id", "a_view_name", $map_src);@
+@$view = $db->save_view("some_design_document_id", "a_view_name", $map_src, $reduce_src);@
+## Get a view (run query and get results):
+@$view = $db->get_view("some_design_document_id", "a_view_name");@
+## Parametrized view:
+@$view = $db->get_view("some_design_document_id", "a_view_name", "2009/02/17 21:13:39");@
+## Parametrized view with key range:
+@$view = $db->get_view("some_design_document_id", "a_view_name", array("2009/01/30 18:04:11", "2009/02/17 21:13:39"));@
+## Parametrized view with key range, ordered descending:
+@$view = $db->get_view("some_design_document_id", "a_view_name", array("2009/01/30 18:04:11", "2009/02/17 21:13:39"), true);@
+
+
+h3. Requirements
+# PHP 5.2 or newer
+
+h3. Recommended
+# PHP 5.3 or newer. With PHP 5.2 following functionality will not work:
+## Some unit-tests
+## Mime type auto-detection.
+# pecl_http
