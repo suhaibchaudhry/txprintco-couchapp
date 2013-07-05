@@ -5,6 +5,9 @@ function(doc) {
 			colors.push(doc.runsizes[i]["colors"][j].color);
 		}
 
-		emit([doc._id, i], colors);
+		var obj = {};
+		obj[j] = colors;
+
+		emit([doc._id, i], obj);
 	}
 }
