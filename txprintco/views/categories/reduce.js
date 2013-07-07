@@ -4,4 +4,5 @@ function(keys, values, rereduce) {
     } else {
     	return values.length;
     }
+    return sum(values);
 }
