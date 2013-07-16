@@ -42,8 +42,39 @@ echo "Pushing CouchApp\n";
 exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/".$db_name);
 
 //$products = array();
-$data = file_get_contents('crawldump_jun-28-2013.tpd');
-$products_types = igbinary_unserialize($data);
+$data_set_1 = file_get_contents('/home/usman/Developer/Crawls/CrawlDump_July15/part1/crawldump_0_to__i17_j54.tpd');
+$data_set_2 = file_get_contents('/home/usman/Developer/Crawls/CrawlDump_July15/part2/crawldump_i17_j55_to_end_flyers_removeshortruns.tpd');
+$data_set_3 = file_get_contents('/home/usman/Developer/Crawls/CrawlDump_July15/part3-posters/crawldump_jul-07-2013_R4OqVp_i18_poster_end.tpd');
+
+$data_1 = igbinary_unserialize($data_set_1);
+$data_2 = igbinary_unserialize($data_set_2);
+$data_3 =  igbinary_unserialize($data_set_3);
+
+//$products_types = array_merge_recursive($data_1, $data_2, $data_3);
+
+
+megeArrays($data_1, $data_2);
+megeArrays($data_1, $data_3);
+
+$products_types = $data_1;
+
+function megeArrays(&$data_1, $data_2) {
+	foreach($data_2 as $product_cat_id => $product_cat) {
+		if(is_array($product_cat) && isset($product_cat['products'])) {
+			if(empty($data_1[$product_cat_id])) {
+				$data_1[$product_cat_id] = $data_2[$product_cat_id];
+			} else {
+				foreach($product_cat['products'] as $product_id => $product) {
+					//if(empty($data_1[$product_cat_id]['products'][$product_id])) {
+						//print "INDEX: ".$product_id."\n";
+						$data_1[$product_cat_id]['products'][$product_id] = $product;
+					//}
+				}
+			}
+		}
+	}
+}
+
 
 // if (is_array($products) == false)
 // {
@@ -89,17 +120,3 @@ foreach($products_types as $product_cat_id => $product_cat) {
 		}
 	 }
 }
-
-// foreach($countries as $country_code => $country) {
-// 	$doc = array();
-// 	$doc[$country_code] = $country;
-
-// 	try {
-// 		// $db->save($doc);
-// 		echo $doc;
-// 	} catch(Exception $e) {
-// 		// die($e->message);
-// 	}
-
-// 	echo "Created Country: ".$country->name."\n";
-// }
