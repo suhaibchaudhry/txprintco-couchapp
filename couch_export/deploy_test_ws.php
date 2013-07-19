@@ -8,7 +8,7 @@ $host = '127.0.0.1';
 $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
-$db_name = 'tpc_product_documents';
+$db_name = 'tpc_test_ws';
 
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
@@ -42,24 +42,16 @@ echo "Pushing CouchApp\n";
 exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/".$db_name);
 
 //$products = array();
-$base_path = '/home/usman/Developer/Crawls/CrawlDump_July18';
-$data_set_1 = file_get_contents($base_path.'/part1/crawldump_0_to__i17_j54.tpd');
-$data_set_2 = file_get_contents($base_path.'/part2/crawldump_i17_j55_to_end_flyers_removeshortruns.tpd');
-$data_set_3 = file_get_contents($base_path.'/part3-posters/crawldump_jul-07-2013_R4OqVp_i18_poster_end.tpd');
-$data_set_4 = file_get_contents($base_path.'/part4/crawldump_jul-15-2013_RJIp0o.tpd');
-$data_set_5 = file_get_contents($base_path.'/part5/crawldump_jul-17-2013_jqGoNI.tpd');
-
-$data_1 = igbinary_unserialize($data_set_1);
-$data_2 = igbinary_unserialize($data_set_2);
-$data_3 =  igbinary_unserialize($data_set_3);
-$data_4 =  igbinary_unserialize($data_set_4);
+$base_path = '/home/usman/Developer/Crawls/SpideyWithShipping';
+$data_1 = file_get_contents($base_path.'/crawldump_jul-19-2013_IpCAGf.tpd');
+$data_1 =  igbinary_unserialize($data_1);
 
 //$products_types = array_merge_recursive($data_1, $data_2, $data_3);
 
 
-megeArrays($data_1, $data_2);
-megeArrays($data_1, $data_3);
-megeArrays($data_1, $data_4);
+//megeArrays($data_1, $data_2);
+//megeArrays($data_1, $data_3);
+//megeArrays($data_1, $data_4);
 
 $products_types = $data_1;
 
