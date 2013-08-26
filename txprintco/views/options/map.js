@@ -23,7 +23,8 @@ function(doc) {
 					// index++;
 					// emit([doc._id, i, j, k], optionNames);
 				}
-				emit([doc._id, i, j, k], obj);
+				emit([doc.product_id, i, j, k], obj);
+				emit([doc.product_id, i, j, k], doc.product_id);
 				
 			}
 		}

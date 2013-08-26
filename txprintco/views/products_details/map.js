@@ -10,11 +10,12 @@ function(doc) {
 		runsizes.push(i);
 	}
 
-	emit(doc._id, {
+	emit(doc.product_id, {
 			'title': doc.title,
 			'url': doc.url,
 			'base_price': doc.base_price,
-			'runsizes': runsizes
+			'runsizes': runsizes,
+			'product_id': doc.product_id
 			//'asad' : 'test'
 		}
 	); 

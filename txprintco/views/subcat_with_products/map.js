@@ -6,5 +6,5 @@ function(doc) {
 //  	'base_price': doc.base_price,
 //  	'product_id': doc._id
 //  });
-	emit(doc.subcat, {'product_id': doc._id});
+	emit(doc.subcat, {'product_id': doc.product_id});
 }

@@ -10,7 +10,8 @@ function(doc) {
 				obj[k] = doc.runsizes[i]["colors"][j]["tat"][k]["price"]["regular"];
 				// doc.runsizes[i]["colors"][j]["tat"][k]["price"]["regular"]['tat_key'];
 				// emit([doc._id, i, j, k], doc.runsizes[i]["colors"][j]["tat"][k]["price"]["regular"]['tat_key']);
-				emit([doc._id, i, j, k], obj);
+				emit([doc.product_id, i, j, k], obj);
+				emit([doc.product_id, i, j, k], doc.product_id);
 			}
 			// var obj = {};
 			// obj[k] = price;

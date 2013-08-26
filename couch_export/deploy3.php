@@ -8,7 +8,7 @@ $host = '127.0.0.1';
 $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
-$db_name = 'tpc_product_documents_md5_product_test';
+$db_name = 'tpc_product_documents';
 
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
@@ -114,7 +114,7 @@ foreach($products_types as $product_cat_id => $product_cat) {
 			{
 				// var_dump($product_id);
 				$products_types[$product_cat_id]['products'][$product_id]['parent_cat'] = array('title' => $product_cat['title'],  'url' => $product_cat['url']);
-				$products_types[$product_cat_id]['products'][$product_id]['product_id'] = md5($product_cat['url']);
+				$products_types[$product_cat_id]['products'][$product_id]['product_id'] = md5($products_types[$product_cat_id]['products'][$product_id]['url']);
 				//Add To couch
 				// var_dump($products_types[$product_cat_id]['products'][$product_id]);
 				$doc = $products_types[$product_cat_id]['products'][$product_id];
@@ -125,7 +125,10 @@ foreach($products_types as $product_cat_id => $product_cat) {
 					die($e->message);
 				}	
 
-				echo "Created Product: ". $products_types[$product_cat_id]['products'][$product_id]['title'] ."\n";
+				echo "Created Product: ". $products_types[$product_cat_id]['products'][$product_id]['title'];
+				echo " - with hash ... " . $products_types[$product_cat_id]['products'][$product_id]['product_id'] ."\n";
+				// echo "Hash of: " . $product_cat['url'] . "\n";
+				// echo "VERSUS: " . $products_types[$product_cat_id]['products'][$product_id]['url'] . "\n";
 			}
 			
 		}

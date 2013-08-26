@@ -9,6 +9,7 @@ function(doc) {
 			colors[j] = doc.runsizes[i]["colors"][j].color;
 		}
 
-		emit([doc._id, i], colors);
+		emit([doc.product_id, i], colors);
+		emit([doc.product_id, i], doc.product_id);
 	}
 }

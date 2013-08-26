@@ -9,7 +9,8 @@ function(doc) {
 			}
 			// var obj = {};
 			// obj[k] = tat;
-			emit([doc._id, i, j], tat);
+			emit([doc.product_id, i, j], tat);
+			emit([doc.product_id, i, j], doc.product_id);
 		}
 	}
 }
