@@ -42,6 +42,7 @@ echo "Pushing CouchApp\n";
 exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/".$db_name);
 
 //$products = array();
+/*
 $base_path = '/home/usman/Developer/Crawls/CrawlDump_July19';
 $data_set_1 = file_get_contents($base_path.'/part1/crawldump_0_to__i17_j54.tpd');
 $data_set_2 = file_get_contents($base_path.'/part2/crawldump_i17_j55_to_end_flyers_removeshortruns.tpd');
@@ -68,6 +69,12 @@ megeArrays($data_1, $data_5);
 megeArrays($data_1, $data_6);
 
 $products_types = $data_1;
+*/
+
+$base_path = '../../4over-spider/exports';
+
+$data_set = file_get_contents($base_path.'/crawldump_feb-12-2015_DckR2z.tpd');
+$products_types = igbinary_unserialize($data_set);
 
 function megeArrays(&$data_1, $data_2) {
 	foreach($data_2 as $product_cat_id => $product_cat) {
