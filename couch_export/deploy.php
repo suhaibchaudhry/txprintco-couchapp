@@ -76,24 +76,6 @@ $base_path = '../../4over-spider/exports';
 $data_set = file_get_contents($base_path.'/crawldump_feb-12-2015_DckR2z.tpd');
 $products_types = igbinary_unserialize($data_set);
 
-function megeArrays(&$data_1, $data_2) {
-	foreach($data_2 as $product_cat_id => $product_cat) {
-		if(is_array($product_cat) && isset($product_cat['products'])) {
-			if(empty($data_1[$product_cat_id])) {
-				$data_1[$product_cat_id] = $data_2[$product_cat_id];
-			} else {
-				foreach($product_cat['products'] as $product_id => $product) {
-					//if(empty($data_1[$product_cat_id]['products'][$product_id])) {
-						//print "INDEX: ".$product_id."\n";
-						$data_1[$product_cat_id]['products'][$product_id] = $product;
-					//}
-				}
-			}
-		}
-	}
-}
-
-
 // if (is_array($products) == false)
 // {
 // echo 'It is not an array!';
