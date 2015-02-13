@@ -73,7 +73,7 @@ $products_types = $data_1;
 
 $base_path = '../../4over-spider/exports';
 
-$data_set = file_get_contents($base_path.'/crawldump_feb-12-2015_DckR2z.tpd');
+$data_set = file_get_contents($base_path.'/crawldump_feb-12-2015_Ii7PJe.tpd');
 $products_types = igbinary_unserialize($data_set);
 
 try {
