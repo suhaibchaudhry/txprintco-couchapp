@@ -76,12 +76,6 @@ $base_path = '../../4over-spider/exports';
 $data_set = file_get_contents($base_path.'/crawldump_feb-12-2015_DckR2z.tpd');
 $products_types = igbinary_unserialize($data_set);
 
-// if (is_array($products) == false)
-// {
-// echo 'It is not an array!';
-// exit;
-// }
-
 try {
 	$db = $server->get_db($db_name);
 } catch(Exception $e) {
