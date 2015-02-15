@@ -41,6 +41,12 @@ if(!databaseExists($db_name, $server)) {
 echo "Pushing CouchApp\n";
 exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/".$db_name);
 
+$base_path = '../../4over-spider/exports';
+
+$data_set = file_get_contents($base_path.'/crawldump_feb-14-2015_sljCTI.tpd');
+$products_types = igbinary_unserialize($data_set);
+
+//Legacy code for merging multiple arrays when cache setup was not in place.
 //$products = array();
 /*
 $base_path = '/home/usman/Developer/Crawls/CrawlDump_July19';
@@ -70,11 +76,6 @@ megeArrays($data_1, $data_6);
 
 $products_types = $data_1;
 */
-
-$base_path = '../../4over-spider/exports';
-
-$data_set = file_get_contents($base_path.'/crawldump_feb-14-2015_qdviQr.tpd');
-$products_types = igbinary_unserialize($data_set);
 
 try {
 	$db = $server->get_db($db_name);

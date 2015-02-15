@@ -15,6 +15,8 @@ function databaseExists($dbName, $server) {
 	return false;
 }
 
+//Legacy code for merging multiple arrays when cache setup was not in place.
+/*
 function megeArrays(&$data_1, $data_2) {
 	foreach($data_2 as $product_cat_id => $product_cat) {
 		if(is_array($product_cat) && isset($product_cat['products'])) {
@@ -31,3 +33,4 @@ function megeArrays(&$data_1, $data_2) {
 		}
 	}
 }
+*/
