@@ -8,7 +8,7 @@ $host = '127.0.0.1';
 $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
-$db_name = 'tpc_product_documents';
+$db_name = 'tpc_product_documents_shallow';
 
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
@@ -43,7 +43,7 @@ exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/
 
 $base_path = '../../4over-spider/exports';
 
-$data_set = file_get_contents($base_path.'/crawldump_feb-14-2015_sljCTI.tpd');
+$data_set = file_get_contents($base_path.'/crawldump_shallow_feb-16-2015_1bed2u.tpd');
 $products_types = igbinary_unserialize($data_set);
 
 //Legacy code for merging multiple arrays when cache setup was not in place.
