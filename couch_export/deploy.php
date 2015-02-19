@@ -8,7 +8,7 @@ $host = '127.0.0.1';
 $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
-$db_name = 'tpc_product_documents_shallow';
+$db_name = 'tpc_product_documents_shallow_w_cats';
 
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
