@@ -10,7 +10,7 @@ function(doc) {
 			// var obj = {};
 			// obj[k] = tat;
 			emit([doc.product_id, i, j], tat);
-			emit([doc.product_id, i, j], doc.product_id);
+			//emit([doc.product_id, i, j], doc.product_id);
 		}
 	}
 }
