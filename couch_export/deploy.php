@@ -44,7 +44,8 @@ exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/
 $base_path = '../../4over-spider/exports';
 
 $data_set = file_get_contents($base_path.'/crawldump_shallow_feb-18-2015_jvnmQx.tpd');
-$products_types = igbinary_unserialize($data_set);
+$data = igbinary_unserialize($data_set);
+$product_types = $data['product_types'];
 
 //Legacy code for merging multiple arrays when cache setup was not in place.
 //$products = array();
@@ -65,7 +66,7 @@ $data_4 =  igbinary_unserialize($data_set_4);
 $data_5 =  igbinary_unserialize($data_set_5);
 $data_6 =  igbinary_unserialize($data_set_6);
 
-//$products_types = array_merge_recursive($data_1, $data_2, $data_3);
+//$product_types = array_merge_recursive($data_1, $data_2, $data_3);
 
 
 megeArrays($data_1, $data_2);
@@ -74,7 +75,7 @@ megeArrays($data_1, $data_4);
 megeArrays($data_1, $data_5);
 megeArrays($data_1, $data_6);
 
-$products_types = $data_1;
+$product_types = $data_1;
 */
 
 try {
@@ -83,11 +84,11 @@ try {
 	die($e->message);
 }
 
-$count = count($products_types);
+$count = count($product_types);
 echo $count;
 //$products[0]['products'][0]);
 
-foreach($products_types as $product_cat_id => $product_cat) {
+foreach($product_types as $product_cat_id => $product_cat) {
 	// var_dump($product_cat_id .' '. $product_cat['title']);
 	$product_count = count($product_cat);
 	// var_dump('Count: ' . $product_count);
@@ -97,11 +98,11 @@ foreach($products_types as $product_cat_id => $product_cat) {
 			if(is_array($product))
 			{
 				// var_dump($product_id);
-				$products_types[$product_cat_id]['products'][$product_id]['parent_cat'] = array('title' => $product_cat['title'],  'url' => $product_cat['url']);
-				$products_types[$product_cat_id]['products'][$product_id]['product_id'] = md5($products_types[$product_cat_id]['products'][$product_id]['url']);
+				$product_types[$product_cat_id]['products'][$product_id]['parent_cat'] = array('title' => $product_cat['title'],  'url' => $product_cat['url']);
+				$product_types[$product_cat_id]['products'][$product_id]['product_id'] = md5($product_types[$product_cat_id]['products'][$product_id]['url']);
 				//Add To couch
-				// var_dump($products_types[$product_cat_id]['products'][$product_id]);
-				$doc = $products_types[$product_cat_id]['products'][$product_id];
+				// var_dump($product_types[$product_cat_id]['products'][$product_id]);
+				$doc = $product_types[$product_cat_id]['products'][$product_id];
 				try {
 					$db->save($doc);
 					//echo $doc;
@@ -109,10 +110,10 @@ foreach($products_types as $product_cat_id => $product_cat) {
 					die($e->message);
 				}	
 
-				echo "Created Product: ". $products_types[$product_cat_id]['products'][$product_id]['title'];
-				echo " - with hash ... " . $products_types[$product_cat_id]['products'][$product_id]['product_id'] ."\n";
+				echo "Created Product: ". $product_types[$product_cat_id]['products'][$product_id]['title'];
+				echo " - with hash ... " . $product_types[$product_cat_id]['products'][$product_id]['product_id'] ."\n";
 				// echo "Hash of: " . $product_cat['url'] . "\n";
-				// echo "VERSUS: " . $products_types[$product_cat_id]['products'][$product_id]['url'] . "\n";
+				// echo "VERSUS: " . $product_types[$product_cat_id]['products'][$product_id]['url'] . "\n";
 			}
 			
 		}
