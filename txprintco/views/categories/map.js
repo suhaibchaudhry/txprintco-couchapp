@@ -1,3 +1,3 @@
 function(doc) {
-  emit(doc.parent_cat.title, null);
+  emit(doc.product_type_weight, doc.parent_cat.title);
 }
