@@ -10,6 +10,6 @@ function(doc) {
 		}
 
 		emit([doc.product_id, i], colors);
-		emit([doc.product_id, i], doc.product_id);
+		//emit([doc.product_id, i], doc.product_id);
 	}
 }
