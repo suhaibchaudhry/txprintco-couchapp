@@ -105,7 +105,8 @@ foreach($product_types as $product_cat_id => $product_cat) {
 				$doc = $product_types[$product_cat_id]['products'][$product_id];
 				try {
 					$doc['product_type_weight'] = $product_cat_id;
-					$doc['product_weight'] = $product_id;  
+					$doc['product_weight'] = $product_id;
+					$doc['object_type'] = 'product';
 
 					$db->save($doc);
 					//echo $doc;
