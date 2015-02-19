@@ -104,6 +104,9 @@ foreach($product_types as $product_cat_id => $product_cat) {
 				// var_dump($product_types[$product_cat_id]['products'][$product_id]);
 				$doc = $product_types[$product_cat_id]['products'][$product_id];
 				try {
+					$doc['product_type_weight'] = $product_cat_id;
+					$doc['product_weight'] = $product_id;  
+
 					$db->save($doc);
 					//echo $doc;
 				} catch(Exception $e) {
