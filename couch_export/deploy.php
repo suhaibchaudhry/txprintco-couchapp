@@ -101,7 +101,7 @@ foreach($product_types as $product_cat_id => $product_cat) {
 			{
 				// var_dump($product_id);
 				$product_types[$product_cat_id]['products'][$product_id]['parent_cat'] = array('title' => $product_cat['title'],  'url' => $product_cat['url']);
-				$product_types[$product_cat_id]['products'][$product_id]['product_id'] = md5($product_types[$product_cat_id]['products'][$product_id]['url']);
+				$product_types[$product_cat_id]['products'][$product_id]['product_id'] = md5($product_cat['title'].'|'.$product_types[$product_cat_id]['products'][$product_id]['url']);
 				//Add To couch
 				// var_dump($product_types[$product_cat_id]['products'][$product_id]);
 				$doc = $product_types[$product_cat_id]['products'][$product_id];
