@@ -32,6 +32,12 @@ function(doc) {
 	}
 }
 
+function getOptionNamesNonRecusrive(optObj, optionList) {
+	for(var option_name in optObj) {
+		optionList.push(option_name);
+	}
+}
+
 // Get the rest of the option names.
 function getOptionNames(optObj, optionList)
 {

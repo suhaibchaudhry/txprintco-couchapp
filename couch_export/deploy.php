@@ -46,6 +46,7 @@ $base_path = '../../4over-spider/exports';
 $data_set = file_get_contents($base_path.'/crawldump_shallow_feb-18-2015_jvnmQx.tpd');
 $data = igbinary_unserialize($data_set);
 $product_types = $data['product_types'];
+$categories = $data['categories'];
 
 //Legacy code for merging multiple arrays when cache setup was not in place.
 //$products = array();
@@ -87,6 +88,7 @@ try {
 $count = count($product_types);
 echo $count;
 //$products[0]['products'][0]);
+
 
 foreach($product_types as $product_cat_id => $product_cat) {
 	// var_dump($product_cat_id .' '. $product_cat['title']);
