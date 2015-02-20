@@ -19,9 +19,8 @@ function(doc) {
 						// emit([doc._id, i, j, k, l], doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"]); //Prints out the whole options object
 						// obj[index] = l;
 						// index++;
-						obj.options = new Array();
-						getOptionNames(doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"], obj.options);
-						emit([doc.product_id, i, j, k], optionNames);
+						var options = getOptionNamesFlat(doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"]);
+						emit([doc.product_id, i, j, k], options);
 					}
 					//emit([doc.product_id, i, j, k], doc.product_id);
 				}
@@ -30,10 +29,13 @@ function(doc) {
 	}
 }
 
-function getOptionNamesNonRecusrive(optObj, optionList) {
+function getOptionNamesFlat(optObj) {
+	var options = new Array();
 	for(var option_name in optObj) {
 		optionList.push(option_name);
 	}
+
+	return options;
 }
 
 // Get the rest of the option names.

@@ -5,7 +5,7 @@ function(doc) {
 				for(k in doc.runsizes[i]["colors"][j]["tat"]){
 					var options = doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"];
 					for(l in options) {
-						emit([doc.product_id, i, j, k, l], options);
+						emit([doc.product_id, i, j, k, l], options[l]);
 					}
 				}
 			}
