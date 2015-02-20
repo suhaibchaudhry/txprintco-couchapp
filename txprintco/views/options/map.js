@@ -32,7 +32,7 @@ function(doc) {
 function getOptionNamesFlat(optObj) {
 	var options = new Array();
 	for(var option_name in optObj) {
-		optionList.push(option_name);
+		options.push(option_name);
 	}
 
 	return options;
