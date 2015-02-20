@@ -21,10 +21,8 @@ function(doc) {
 						// index++;
 						obj.options = new Array();
 						getOptionNames(doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"], obj.options);
-						// index++;
-						// emit([doc._id, i, j, k], optionNames);
+						emit([doc.product_id, i, j, k], optionNames);
 					}
-					emit([doc.product_id, i, j, k], obj);
 					//emit([doc.product_id, i, j, k], doc.product_id);
 				}
 			}
