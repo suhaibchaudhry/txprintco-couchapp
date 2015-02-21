@@ -86,9 +86,8 @@ try {
 }
 
 $count = count($product_types);
-echo $count;
+echo $count."\n";
 //$products[0]['products'][0]);
-
 
 foreach($product_types as $product_cat_id => $product_cat) {
 	// var_dump($product_cat_id .' '. $product_cat['title']);
@@ -124,4 +123,18 @@ foreach($product_types as $product_cat_id => $product_cat) {
 			
 		}
 	 }
+}
+
+//Importing Categories
+foreach($categories as $categorization) {
+	$doc = $categorization;
+	try {
+		$doc['object_type'] = 'categorization';
+		$db->save($doc);
+		//echo $doc;
+	} catch(Exception $e) {
+		die($e->message);
+	}
+
+	echo "Created Categorizations for product type: ". $doc['product_type']."\n";
 }
