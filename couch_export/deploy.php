@@ -43,7 +43,7 @@ exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/
 
 $base_path = '../../4over-spider/exports';
 
-$data_set = file_get_contents($base_path.'/crawldump_shallow_feb-18-2015_jvnmQx.tpd');
+$data_set = file_get_contents($base_path.'/crawldump_shallow_feb-22-2015_G9FJ0T.tpd');
 $data = igbinary_unserialize($data_set);
 $product_types = $data['product_types'];
 $categories = $data['categories'];
