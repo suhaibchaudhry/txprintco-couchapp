@@ -6,12 +6,12 @@ function(doc) {
 		var terms = new Array();
 		var options = doc.categories[i]["options"];
 		for(j in options) {
-			terms.push(j);
+			terms.push(options[j].term_name);
 		}
 
 		categoriesArray.push({
-				'vocabulary_en_name': doc.categories[i]["vocabulary_en"],
-				'vocabulary_machine_name': i,
+				'vocabulary_en_name': doc.categories[i]["vocabulary_en_name"],
+				'vocabulary_machine_name': doc.categories[i]["vocabulary_machine_name"],
 				'terms': terms
 		});
     }
