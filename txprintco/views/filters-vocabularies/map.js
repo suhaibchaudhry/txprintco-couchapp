@@ -4,14 +4,14 @@ function(doc) {
 
     for(var i in doc.categories) {
 		var terms = new Array();
-		var options = doc.categories[k]["options"];
+		var options = doc.categories[i]["options"];
 		for(var j in options) {
 			terms.push(j);
 		}		
 
 		var vocabulary = {
-			'vocabulary_en_name': doc.categories[k],
-			'vocabulary_machine_name': k,
+			'vocabulary_en_name': doc.categories[i],
+			'vocabulary_machine_name': i,
 			'terms': terms
 		};
 
