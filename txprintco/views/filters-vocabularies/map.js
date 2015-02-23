@@ -1,23 +1,21 @@
 function(doc) {
   if(doc.object_type === 'categorization') {
-  	var categories = new Array();
+    var categoriesArray = [];
 
-    for(var i in doc.categories) {
+    for(i in doc.categories) {
 		var terms = new Array();
 		var options = doc.categories[i]["options"];
-		for(var j in options) {
+		for(j in options) {
 			terms.push(j);
-		}		
+		}
 
-		var vocabulary = {
-			'vocabulary_en_name': doc.categories[i],
-			'vocabulary_machine_name': i,
-			'terms': terms
-		};
-
-		categores.push(vocabulary);
+		categoriesArray.push({
+				'vocabulary_en_name': doc.categories[i]["vocabulary_en"],
+				'vocabulary_machine_name': i,
+				'terms': terms
+		});
     }
 
-    emit(doc.product_type, categories);
+    emit(doc.product_type, categoriesArray);
   }
 }
