@@ -8,7 +8,7 @@ $host = '127.0.0.1';
 $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
-$db_name = 'tpc_product_documents_shallow_w_cats';
+$db_name = 'tpc_product_documents_shallow_cats';
 
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
@@ -43,7 +43,7 @@ exec("couchapp push ../txprintco http://".$user.":".$pass."@".$host.":".$port."/
 
 $base_path = '../../4over-spider/exports';
 
-$data_set = file_get_contents($base_path.'/crawldump_shallow_feb-22-2015_IIvymM.tpd');
+$data_set = file_get_contents($base_path.'/crawldump_shallow_feb-23-2015_X3jMv6.tpd');
 $data = igbinary_unserialize($data_set);
 $product_types = $data['product_types'];
 $categories = $data['categories'];
