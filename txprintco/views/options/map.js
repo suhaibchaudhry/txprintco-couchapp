@@ -14,14 +14,14 @@ function(doc) {
 					// obj[k] = doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"];
 					// emit([doc._id, i, j, k], obj);
 					// getOptionNames([doc._id, i, j, k] ,doc.runsizes[i]["colors"][j]["tat"][k]);
-					for(l in doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"])
-					{
+					//for(l in doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"])
+					//{
 						// emit([doc._id, i, j, k, l], doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"]); //Prints out the whole options object
 						// obj[index] = l;
 						// index++;
 						var options = getOptionNamesFlat(doc.runsizes[i]["colors"][j]["tat"][k]["price"]["options"]);
 						emit([doc.product_id, i, j, k], options);
-					}
+					//}
 					//emit([doc.product_id, i, j, k], doc.product_id);
 				}
 			}
