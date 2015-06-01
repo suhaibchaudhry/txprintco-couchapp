@@ -18,7 +18,7 @@ function(doc) {
 				'subcat': doc.subcat,
 				'title': doc.title,
 				'url': doc.url,
-				'base_price': doc.base_price,
+				'base_price': doc.base_price.replace(/[^0-9\.]+/g,""),
 				'runsizes': runsizes,
 				'product_id': doc.product_id
 				//'asad' : 'test'
