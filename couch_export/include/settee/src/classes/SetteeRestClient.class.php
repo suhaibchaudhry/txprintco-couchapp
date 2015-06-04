@@ -243,6 +243,4 @@ class SetteeRestClient {
   }
 }
 
-class SetteeRestClientException extends Exception {
-  public $message;
-}
+class SetteeRestClientException extends Exception {}
