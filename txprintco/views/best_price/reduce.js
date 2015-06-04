@@ -13,10 +13,10 @@ function(keys, values, rereduce) {
 
     	for(var j in doc) {
     		if(typeof doc[j] == "object") {
-    			amount = Number(doc[j].base_price.replace(/[^0-9\.]+/g,""));
+    			amount = Number(doc[j].base_price);
     			if(best_price == 0 || amount < best_price) {
     				best_price = amount;
-                    best_price_str = doc[j].base_price;
+                    		best_price_str = doc[j].base_price;
     			}
     		}
     	}
