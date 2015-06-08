@@ -141,4 +141,13 @@ foreach($categories as $categorization) {
 }
 
 echo "Building Views...";
-file_get_contents("http://".$host.":".$port."/".$db_name."/_design/txprintco/_view/best_price");
+
+$opts = array (
+  'http'=>array (
+    'method'=>"GET",
+    'timeout' => 3000
+  )
+);
+
+$context = stream_context_create($opts);
+file_get_contents("http://".$host.":".$port."/".$db_name."/_design/txprintco/_view/best_price", false, $context);
