@@ -140,7 +140,7 @@ foreach($categories as $categorization) {
 	echo "Created Categorizations for product type: ". $doc['product_type']."\n";
 }
 
-echo "Building Views...";
+echo "Building Views...\n";
 
 $opts = array (
   'http'=>array (
