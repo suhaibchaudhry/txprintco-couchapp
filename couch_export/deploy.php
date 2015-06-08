@@ -139,3 +139,6 @@ foreach($categories as $categorization) {
 
 	echo "Created Categorizations for product type: ". $doc['product_type']."\n";
 }
+
+echo "Building Views...";
+file_get_contents("http://".$host.":".$port."/".$db_name."/_design/txprintco/_view/best_price");
