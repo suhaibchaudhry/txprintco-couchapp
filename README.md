@@ -2,7 +2,11 @@
 
 ![](http://couchdb.apache.org/image/couch.png)
 
-Update tpd filename, couchdb host, admin username and password in deploy.php, then run it as an executable to begin import.
+Update tpd filename, couchdb host, admin username and password in deploy.php, then run it as an executable to begin import:
+
+`./deploy.php`
+
+Please make sure php-cli and igbinary PECL extension.
 
 Make sure python based couchapp program is installed on machine before proceeding:
 
