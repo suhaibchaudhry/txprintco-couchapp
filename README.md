@@ -6,7 +6,7 @@ Update tpd filename, couchdb host, admin username and password in deploy.php, th
 
 `./deploy.php`
 
-Please make sure php-cli and igbinary PECL extension.
+Please make sure php-cli and igbinary PECL extension is installed: http://pecl.php.net/package/igbinary
 
 Make sure python based couchapp program is installed on machine before proceeding:
 
