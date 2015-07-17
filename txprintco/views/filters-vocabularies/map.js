@@ -16,6 +16,6 @@ function(doc) {
 		});
     }
 
-    emit(doc.product_type, categoriesArray);
+    emit(doc.product_type.toLowerCase().replace(/[_\W]+/g, '-'), categoriesArray);
   }
 }
