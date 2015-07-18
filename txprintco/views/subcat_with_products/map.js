@@ -7,6 +7,6 @@ function(doc) {
 //  	'product_id': doc._id
 //  });
 	if(doc.object_type === 'product') {
-		emit([doc.parent_cat, doc.subcat], {'product_id': doc.product_id});
+		emit([doc.parent_cat.title.toLowerCase().replace(/[_\W]+/g, '-'), doc.subcat], {'product_id': doc.product_id});
 	}
 }
