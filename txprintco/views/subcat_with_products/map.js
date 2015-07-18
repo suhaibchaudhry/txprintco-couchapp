@@ -1,21 +1,12 @@
 function(doc) {
+//	var obj = {};
+//	obj[doc.subcat] = {'title': doc.title, 'base_price': doc.base_price, 'product_id': doc._id}
+//  emit(doc.parent_cat.title, {doc.subcat:
+//  	'title': doc.title,
+//  	'base_price': doc.base_price,
+//  	'product_id': doc._id
+//  });
 	if(doc.object_type === 'product') {
-		var runsizes = new Array();
-
-		for(i in doc.runsizes) {
-			runsizes.push(i);
-		}
-
-		emit(doc.subcat, {
-				'doc_id': doc._id,
-				'doc_rev': doc._rev,
-				'parent_cat': doc.parent_cat,
-				'subcat': doc.subcat,
-				'title': doc.title,
-				'url': doc.url,
-				'base_price': doc.base_price,
-				'runsizes': runsizes,
-				'product_id': doc.product_id
-		});
+		emit(doc.subcat, {'product_id': doc.product_id});
 	}
 }
