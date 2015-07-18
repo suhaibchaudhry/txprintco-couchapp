@@ -1,5 +1,11 @@
 function(doc) {
     if(doc.object_type === 'product') {
+    	var runsizes = new Array();
+
+		for(i in doc.runsizes) {
+			runsizes.push(i);
+		}
+
         emit(doc.vendor_product_id, {
 				'doc_id': doc._id,
 				'doc_rev': doc._rev,
