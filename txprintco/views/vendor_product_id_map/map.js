@@ -8,8 +8,7 @@ function(doc) {
 
         emit(doc.vendor_product_id, {
 				'doc_id': doc._id,
-				'doc_rev': doc._rev,
-				'parent_cat': doc.parent_cat,
+				'doc_rev': doc._rev,	
 				'subcat': doc.subcat,
 				'title': doc.title,
 				'url': doc.url,
