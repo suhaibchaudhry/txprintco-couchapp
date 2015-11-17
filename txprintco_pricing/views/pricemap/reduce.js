@@ -3,7 +3,7 @@ function(keys, values, rereduce) {
     var best_price = '';
     for(var i in values) {
       var value = Number(values[i]);
-      if(value < amount || amount == 0) {
+      if(value > amount) {
         amount = value;
         best_price = values[i];
       }
