@@ -9,8 +9,38 @@ $host = '127.0.0.1';
 $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
-$db_name = 'txprintco_dev_stage16';
+$db_name = 'txprintco_dev_stage17';
+$price_db = 'txprintco_price_maps';
 
+$server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
+if(!databaseExists($price_db, $server)) {
+	try {
+		$server->create_db($price_db);
+	} catch(Exception $e) {
+		die($e->message);
+	}
+
+	echo 'Created database: '.$price_db."\n";
+} else {
+	try {
+		$server->drop_db($price_db);
+	} catch(Exception $e) {
+		die($e->message);
+	}
+
+	echo 'Dropped database: '.$price_db."\n";
+
+	try {
+		$server->create_db($price_db);
+	} catch(Exception $e) {
+		die($e->message);
+	}
+
+	echo 'Created database: '.$price_db."\n";
+}
+
+echo "Pushing CouchApp\n";
+exec("couchapp push ../txprintco_pricing http://".$user.":".$pass."@".$host.":".$port."/".$price_db);
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
 if(!databaseExists($db_name, $server)) {
@@ -27,9 +57,9 @@ if(!databaseExists($db_name, $server)) {
 	} catch(Exception $e) {
 		die($e->message);
 	}
-	
+
 	echo 'Dropped database: '.$db_name."\n";
-	
+
 	try {
 		$server->create_db($db_name);
 	} catch(Exception $e) {
@@ -95,7 +125,7 @@ foreach($product_types as $product_cat_id => $product_cat) {
 	$product_count = count($product_cat);
 	// var_dump('Count: ' . $product_count);
 	 if(is_array($product_cat) && isset($product_cat['products'])) {
-		foreach($product_cat['products'] as $product_id => $product) 
+		foreach($product_cat['products'] as $product_id => $product)
 		{
 			if(is_array($product))
 			{
@@ -114,14 +144,14 @@ foreach($product_types as $product_cat_id => $product_cat) {
 					//echo $doc;
 				} catch(Exception $e) {
 					die($e->message);
-				}	
+				}
 
 				echo "Created Product: ". $product_types[$product_cat_id]['products'][$product_id]['title'];
 				echo " - with hash ... " . $product_types[$product_cat_id]['products'][$product_id]['product_id'] ."\n";
 				// echo "Hash of: " . $product_cat['url'] . "\n";
 				// echo "VERSUS: " . $product_types[$product_cat_id]['products'][$product_id]['url'] . "\n";
 			}
-			
+
 		}
 	 }
 }
