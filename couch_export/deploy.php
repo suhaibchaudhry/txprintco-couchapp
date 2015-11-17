@@ -10,37 +10,6 @@ $port = '5984';
 $user = 'root';
 $pass = 'xyz786';
 $db_name = 'txprintco_dev_stage17';
-$price_db = 'txprintco_price_maps';
-
-$server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
-if(!databaseExists($price_db, $server)) {
-	try {
-		$server->create_db($price_db);
-	} catch(Exception $e) {
-		die($e->message);
-	}
-
-	echo 'Created database: '.$price_db."\n";
-} else {
-	try {
-		$server->drop_db($price_db);
-	} catch(Exception $e) {
-		die($e->message);
-	}
-
-	echo 'Dropped database: '.$price_db."\n";
-
-	try {
-		$server->create_db($price_db);
-	} catch(Exception $e) {
-		die($e->message);
-	}
-
-	echo 'Created database: '.$price_db."\n";
-}
-
-echo "Pushing CouchApp\n";
-exec("couchapp push ../txprintco_pricing http://".$user.":".$pass."@".$host.":".$port."/".$price_db);
 
 $server = new SetteeServer('http://'.$user.':'.$pass.'@'.$host.':'.$port);
 if(!databaseExists($db_name, $server)) {
