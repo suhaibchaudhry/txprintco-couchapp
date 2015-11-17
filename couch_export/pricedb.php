@@ -39,3 +39,4 @@ if(!databaseExists($price_db, $server)) {
 
 echo "Pushing CouchApp\n";
 exec("couchapp push ../txprintco_pricing http://".$user.":".$pass."@".$host.":".$port."/".$price_db);
+?>
